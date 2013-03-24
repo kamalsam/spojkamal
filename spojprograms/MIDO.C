@@ -1,0 +1,101 @@
+/*
+kamalsam
+*/
+#include<stdio.h>
+int main()
+{
+    int n,i;
+    scanf("%d",&n);
+    int d[n],m[n],s[n],f,s1;
+    int fm,sm,ss,fs,finalfm,finalsm,finalss,finalfs;
+    finalfm=finalsm=finalss=finalfs=0;
+    for(i=0;i<n;i++)
+        scanf("%d%d:%d",&d[i],&m[i],&s[i]);    
+    int count1=0,count2=0;
+    f=s1=-1;
+    for(i=0;i<n;i++)
+    {
+        if(d[i]==1)
+        {
+            if(count1==count2)
+             f=i;
+            count1++;
+            if(count1==count2)
+            {
+                fm=m[i]-m[s1];
+                fs=s[i]-s[s1];
+                finalfm+=fm;
+                if(fs>=0)
+                 finalfs+=fs;
+                else
+                {
+                  finalfm--;
+                  fs+=60;
+                  finalfs+=fs;  
+                } 
+                finalfm+=(finalfs/60);
+                finalfs=(finalfs%60);                        
+                s1=-1;
+            }
+                
+        }
+        else
+        {
+            if(count1==count2)
+             s1=i;
+            count2++;
+            if(count1==count2)
+            {
+                sm=m[i]-m[f];
+                ss=s[i]-s[f];                
+                finalsm+=sm;
+                if(ss>=0)
+                  finalss+=ss;
+                else
+                {
+                  finalsm--;
+                  ss+=60;
+                  finalss+=ss;
+                }
+                finalsm+=(finalss/60);
+                finalss=(finalss%60);               
+                f=-1;
+            }
+        }
+    }
+    if(f>=0)
+    {
+        sm=47-m[f];
+        ss=60-s[f];
+        finalsm+=sm;
+        finalss+=ss;
+        finalsm+=(finalss/60);
+        finalss=(finalss%60);
+    }
+    else if(s1>=0)
+    {
+        fm=47-m[s1];
+        fs=60-s[s1];
+        finalfm+=fm;
+        finalfs+=fs;
+        finalfm+=(finalfs/60);
+        finalfs=(finalfs%60);
+    }
+    if(finalsm/10)
+     printf("%d:",finalsm);
+    else
+     printf("0%d:",finalsm);
+    if(finalss/10)
+     printf("%d\n",finalss);
+    else
+     printf("0%d\n",finalss);
+    if(finalfm/10)
+     printf("%d:",finalfm);     
+    else
+     printf("0%d:",finalfm);     
+    if(finalfs/10)
+     printf("%d\n",finalfs);     
+    else
+     printf("0%d\n",finalfs);     
+    return 0;
+}
