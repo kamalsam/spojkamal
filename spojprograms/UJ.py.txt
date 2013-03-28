@@ -1,0 +1,7 @@
+/*
+kamalsam
+*/
+while True:
+ b,e=map(int,input().split())
+ if (b==0 and e==0): break
+ print(b**e)

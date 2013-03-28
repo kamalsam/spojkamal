@@ -1,0 +1,100 @@
+/*
+kamalsam
+*/
+#include<iostream>
+#include<string>
+using namespace std;
+int main()
+{
+    while(1)
+    {
+        int x,i,d,o;
+        x=o=d=0;
+        string s,s0,s1,s2;
+        cin>>s;
+       if(s.compare("end")==0)
+        break; 
+       else
+       {   
+        s0+=s[0];
+        s0+=s[1];
+        s0+=s[2];
+        s1+=s[3]; 
+        s1+=s[4]; 
+        s1+=s[5]; 
+        s2+=s[6]; 
+        s2+=s[7]; 
+        s2+=s[8];      
+        for(i=0;i<3;i++)
+        {
+           if(s0[i]=='X')
+            x++;
+           if(s1[i]=='X')
+            x++;
+           if(s2[i]=='X')
+            x++;
+           if(s0[i]=='O')
+            o++;
+           if(s1[i]=='O')
+            o++;
+           if(s2[i]=='O')
+            o++;
+           if(s0[i]=='.')
+            d++;
+           if(s1[i]=='.')
+            d++;
+           if(s2[i]=='.')
+            d++;
+        }
+        int count=0,count1=0;
+        if(s0[0]=='O'&&s0[1]=='O'&&s0[2]=='O')
+         count=1;
+        if(s1[0]=='O'&&s1[1]=='O'&&s1[2]=='O')
+         count=1;
+        if(s2[0]=='O'&&s2[1]=='O'&&s2[2]=='O')
+         count=1;
+        if(s0[0]=='O'&&s1[0]=='O'&&s2[0]=='O')
+         count=1;
+        if(s0[1]=='O'&&s1[1]=='O'&&s2[1]=='O')
+         count=1;
+        if(s0[2]=='O'&&s1[2]=='O'&&s2[2]=='O')
+         count=1;
+        if(s0[0]=='O'&&s1[1]=='O'&&s2[2]=='O')
+         count=1;
+        if(s0[2]=='O'&&s1[1]=='O'&&s2[0]=='O')
+         count=1;
+        if(s0[0]=='X'&&s0[1]=='X'&&s0[2]=='X')
+         count1=1;
+        if(s1[0]=='X'&&s1[1]=='X'&&s1[2]=='X')
+         count1=1;
+        if(s2[0]=='X'&&s2[1]=='X'&&s2[2]=='X')
+         count1=1;
+        if(s0[0]=='X'&&s1[0]=='X'&&s2[0]=='X')
+         count1=1;
+        if(s0[1]=='X'&&s1[1]=='X'&&s2[1]=='X')
+         count1=1;
+        if(s0[2]=='X'&&s1[2]=='X'&&s2[2]=='X')
+         count1=1;
+        if(s0[0]=='X'&&s1[1]=='X'&&s2[2]=='X')
+         count1=1;
+        if(s0[2]=='X'&&s1[1]=='X'&&s2[0]=='X')
+         count1=1;        
+        if(count==1&&count1==1)
+         cout<<"invalid"<<endl;
+        else if(count==1&&x!=o)
+         cout<<"invalid"<<endl;
+        else if(count1==1&&x<=o)
+         cout<<"invalid"<<endl;
+        else if(count!=1&&count1!=1&&d>0)
+         cout<<"invalid"<<endl;
+        else
+        {  
+         if((x>=o)&&((x-o)<=1))
+          cout<<"valid"<<endl;
+         else
+          cout<<"invalid"<<endl;        
+        }
+     }
+    }
+    return 0;
+}
